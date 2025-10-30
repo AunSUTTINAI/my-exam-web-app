@@ -1,0 +1,203 @@
+.swal2-container {
+  z-index: 2000;
+}
+
+.custom-toast {
+  /* padding: 10px; */
+  border-radius: 8px;
+  box-shadow: 0px 8px 24px rgba(0, 200, 100, 0.9);
+  /* width: 300px; */
+}
+
+.custom-toast.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 10px solid #4caf50;
+}
+
+.custom-toast.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 10px solid salmon;
+}
+
+.custom-toast.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 10px solid #ffc107;
+}
+
+.custom-toast.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-left: 10px solid #00bcd4;
+}
+
+.custom-icon {
+  font-size: 20px !important;
+}
+
+.custom-toast.success .swal2-icon {
+  background-color: #4caf50 !important;
+  color: #ffffff;
+}
+
+.custom-toast.error .swal2-icon {
+  background-color: #e91e63 !important;
+  color: #ffffff;
+}
+
+.custom-toast.warning .swal2-icon {
+  background-color: #ff9800 !important;
+  color: #ffffff;
+}
+
+.custom-toast.info .swal2-icon {
+  background-color: #2196f3 !important;
+  color: #ffffff;
+}
+
+.custom-toast.question .swal2-icon {
+  background-color: #9c27b0 !important;
+  color: #ffffff;
+}
+
+.custom-swal-popup {
+  background-color: #fff9fa;
+  border: 2px dashed #f44336 !important; /* เส้นขอบแบบ dashed */
+  border-radius: 10px !important; /* มุมโค้งมน */
+  padding: 20px !important; /* ระยะห่างภายใน */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important; /* เพิ่มเงา */
+}
+
+.custom-swal-logout-popup {
+  background-color: #f7fffe;
+  border: 2px dashed #28b485 !important;
+  border-radius: 10px !important;
+  padding: 20px !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important; /* เพิ่มเงา */
+}
+
+.custom-confirm-button {
+  background-color: #f44336 !important; /* สีแดง */
+  color: white !important; /* ตัวอักษรสีขาว */
+  border-radius: 25px !important; /* ความโค้งของปุ่ม */
+  font-weight: bold !important; /* ตัวอักษรหนา */
+}
+
+.custom-cancel-button {
+  background-color: #9e9e9e !important; /* สีเทา */
+  color: white !important; /* ตัวอักษรสีขาว */
+  border-radius: 25px !important; /* ความโค้งของปุ่ม */
+  font-weight: bold !important; /* ตัวอักษรหนา */
+}
+
+.custom-confirm-logout-button {
+  background-color: #28b485 !important; /* สีแดง */
+  color: white !important; /* ตัวอักษรสีขาว */
+  border-radius: 25px !important; /* ความโค้งของปุ่ม */
+  font-weight: bold !important; /* ตัวอักษรหนา */
+}
+
+.custom-cancel-logout-button {
+  background-color: #9e9e9e !important; /* สีเทา */
+  color: white !important; /* ตัวอักษรสีขาว */
+  border-radius: 25px !important; /* ความโค้งของปุ่ม */
+  font-weight: bold !important; /* ตัวอักษรหนา */
+}
+
+/* .custom-swal-alertv2-container {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 10px dashed rgba(73, 73, 73, 0.4);
+  border-radius: 8px;
+} */
+
+@keyframes border-dance {
+  0% {
+    border-image-source: linear-gradient(
+      0deg,
+      rgba(255, 182, 193, 0.5),
+      /* ชมพูพาสเทล */ rgba(173, 216, 230, 0.5),
+      /* ฟ้าพาสเทล */ rgba(144, 238, 144, 0.5) /* เขียวมิ้นท์ */
+    );
+  }
+  25% {
+    border-image-source: linear-gradient(
+      90deg,
+      rgba(173, 216, 230, 0.5),
+      /* ฟ้าพาสเทล */ rgba(144, 238, 144, 0.5),
+      /* เขียวมิ้นท์ */ rgba(255, 239, 213, 0.5) /* เหลืองพาสเทล */
+    );
+  }
+  50% {
+    border-image-source: linear-gradient(
+      180deg,
+      rgba(144, 238, 144, 0.5),
+      /* เขียวมิ้นท์ */ rgba(255, 239, 213, 0.5),
+      /* เหลืองพาสเทล */ rgba(221, 160, 221, 0.5) /* ม่วงพาสเทล */
+    );
+  }
+  75% {
+    border-image-source: linear-gradient(
+      270deg,
+      rgba(255, 239, 213, 0.5),
+      /* เหลืองพาสเทล */ rgba(221, 160, 221, 0.5),
+      /* ม่วงพาสเทล */ rgba(255, 182, 193, 0.5) /* ชมพูพาสเทล */
+    );
+  }
+  100% {
+    border-image-source: linear-gradient(
+      360deg,
+      rgba(221, 160, 221, 0.5),
+      /* ม่วงพาสเทล */ rgba(255, 182, 193, 0.5),
+      /* ชมพูพาสเทล */ rgba(173, 216, 230, 0.5) /* ฟ้าพาสเทล */
+    );
+  }
+}
+
+.custom-swal-alertv2-container {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 30px solid transparent;
+  border-radius: 8px;
+  border-image-slice: 1;
+  animation: border-dance 5s linear infinite;
+}
+
+.custom-swal-alertv2-popup {
+  border: 2px dashed #e3f2fd !important;
+  border-radius: 10px !important;
+  box-shadow: 0px 4px 10px rgba(6, 149, 245, 0.5) !important;
+}
+.custom-confirmv2-button {
+  background-color: #2196f3 !important;
+  color: white !important;
+  border-radius: 25px !important;
+  font-weight: bold !important;
+}
+.custom-cancelv2-button {
+  background-color: #9e9e9e !important;
+  color: white !important;
+  border-radius: 25px !important;
+  font-weight: bold !important;
+}
+.custom-iconv2 {
+  color: #ffffff !important;
+}
+
+.custom-swal-confirm-icon {
+  font-size: 20px;
+  /* /* border: none !important; */
+  box-shadow: 0px 4px 10px rgba(6, 149, 245, 0.5) !important;
+  /* border: 30px solid transparent; */
+  /* border-radius: 8px; */
+}
+
+.custom-swal-cancel-icon {
+  font-size: 20px;
+  /* /* border: none !important; */
+  box-shadow: 0px 4px 10px rgba(245, 6, 6, 0.5) !important;
+  /* border: 30px solid transparent; */
+  /* border-radius: 8px; */
+}
