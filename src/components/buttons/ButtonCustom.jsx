@@ -29,11 +29,8 @@ export default function ButtonCustom({
       onClick={onClick}
       {...props}
     >
-      {loading ? (
-        <CircularProgress size={22} color="inherit" />
-      ) : (
-        label
-      )}
+      {loading && <CircularProgress sx={{ mr: 1 }} size={22} color="inherit" />}{" "}
+      {label}
     </Button>
   );
 }

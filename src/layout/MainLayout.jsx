@@ -1,4 +1,4 @@
-import { Outlet, NavLink, useNavigation } from "react-router-dom";
+import { Outlet, NavLink, useNavigation, useLocation } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -10,10 +10,12 @@ import {
 } from "@mui/material";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import Loading from "../components/loading/Loading";
+import { configMenu } from "./configMenu";
 
 export default function MainLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
+  const location = useLocation();
 
   return (
     <>
@@ -32,7 +34,28 @@ export default function MainLayout() {
             <FmdGoodRoundedIcon sx={{ color: "error.main" }} /> EXAM WEB APP
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Button sx={{ textTransform: "uppercase" }}>map</Button>
+            {configMenu.map((item) => {
+              return (
+                <Button
+                  component={NavLink}
+                  to={item.path}
+                  sx={{
+                    textTransform: "uppercase",
+                    color: "white",
+                    px: 2,
+                    borderRadius: 2,
+                    transition: "background-color 0.3s",
+                    "&.active":
+                      location.pathname.toLowerCase() ===
+                      item.path.toLowerCase()
+                        ? { backgroundColor: "rgba(255,255,255,0.25)" }
+                        : "",
+                  }}
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
           </Box>
         </Toolbar>
         {isLoading && <Loading />}

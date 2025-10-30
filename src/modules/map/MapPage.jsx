@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
-import CustomMap from "../components/maps/CustomMap";
-import httpClient from "../api/httpClient";
-import { apiCollection } from "../configs/constants";
+import CustomMap from "../../components/maps/CustomMap";
+import httpClient from "../../api/httpClient";
+import { apiCollection, THEME_GLOBE } from "../../configs/constants";
 import {
   Grid,
   Box,
@@ -12,14 +12,23 @@ import {
   DialogActions,
   DialogTitle,
   Typography,
+  CardMedia,
+  useTheme,
+  CardHeader,
 } from "@mui/material";
-import Loading from "../components/loading/Loading";
-import CardPosition from "../components/Card/CardPosition";
-import CustomSlider from "../components/inputs/CustomSlider";
-import ButtonCustom from "../components/buttons/ButtonCustom";
-import { circlePaint, confidenceMap, instrumentMap } from "./configMap";
-import PieChart from "../components/Charts/PieChart";
-import BarChart from "../components/Charts/BarChart";
+import Loading from "../../components/loading/Loading";
+import CardPosition from "../../components/card/CardPosition";
+import CustomSlider from "../../components/inputs/CustomSlider";
+import ButtonCustom from "../../components/buttons/ButtonCustom";
+import {
+  circlePaint,
+  confidenceMap,
+  instrumentMap,
+  mapThemesConfig,
+} from "./config";
+import PieChart from "../../components/charts/PieChart";
+import BarChart from "../../components/charts/BarChart";
+import DialogDetailMap from "./DialogDetailMap";
 
 const MemoCustomMap = memo(CustomMap);
 
@@ -30,7 +39,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [recordLimit, setRecordLimit] = useState(500);
   const [isOpen, setIsOpen] = useState({ data: null, open: false });
-  //#endregion
+  const [currentMapStyle, setCurrentMapStyle] = useState(THEME_GLOBE);
+  const themes = useTheme();
 
   //? fetch data
   //#region FETCH DATA
@@ -130,7 +140,12 @@ function App() {
     );
   //#endregion
 
-  console.log(confidenceSummary);
+  const handleChageThemeMaps = useCallback((theme) => {
+    if (theme === 1) {
+      setChangeTheme();
+    } else {
+    }
+  }, []);
 
   return (
     <Box>
@@ -174,7 +189,7 @@ function App() {
         )}
       </CardPosition>
       {isOpen.open && (
-        <MapDetailDialog
+        <DialogDetailMap
           data={isOpen.data}
           open={isOpen.open}
           onClose={handleCloseDialog}
@@ -184,8 +199,7 @@ function App() {
         <Grid item size={{ xs: 12, md: 10 }}>
           {!loading && !!mapsData.features?.length && (
             <MemoCustomMap
-              styleUrl="https://demotiles.maplibre.org/globe.json"
-              //"https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
+              styleUrl={currentMapStyle}
               zoom={3}
               height={800}
               data={mapData}
@@ -215,40 +229,44 @@ function App() {
                 onChange={onChangeLimitOffset}
               />
               <Stack spacing={2} sx={{ mt: 4, justifySelf: "flex-end" }}>
-                <ButtonCustom label="SEARCH" onClick={handleSearch} />
+                <ButtonCustom
+                  label="SEARCH"
+                  onClick={handleSearch}
+                  loading={loading}
+                />
               </Stack>
             </Box>
+            <Card sx={{ padding: 2 }}>
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                {mapThemesConfig.map((theme) => (
+                  <Box
+                    key={theme.id}
+                    component="img"
+                    sx={{
+                      width: 100,
+                      borderRadius: "16px",
+                      objectFit: "cover",
+                      cursor: "pointer",
+                      border:
+                        currentMapStyle === theme.styleUrl
+                          ? `3px solid ${themes.palette.primary.main}`
+                          : "",
+                      opacity: currentMapStyle === theme.styleUrl ? 1 : 0.7,
+                      "&:hover": {
+                        opacity: 1,
+                      },
+                    }}
+                    alt={theme.name}
+                    src={theme.imageSrc}
+                    onClick={() => setCurrentMapStyle(theme.styleUrl)}
+                  />
+                ))}
+              </Box>
+            </Card>
           </Card>
         </Grid>
       </Grid>
     </Box>
-  );
-}
-
-function MapDetailDialog({ open, data, onClose }) {
-  return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogTitle>{data.ct_tn}</DialogTitle>
-      <DialogContent dividers>
-        <Stack spacing={2}>
-          <Typography variant="h6">ข้อมูลดาวเทียม</Typography>
-          <Typography variant="body1">ดาวเทียม: {data.satellite}</Typography>
-          <Typography variant="body1">
-            Tool :{instrumentMap[data.instrument] || data.instrument || "-"}
-          </Typography>
-          <Typography variant="body1">FRP: {data.frp ?? "-"} MW</Typography>
-          <Typography variant="body1">
-            Confidence:{" "}
-            {confidenceMap[data.confidence] || data.confidence || "-"}
-          </Typography>
-        </Stack>
-      </DialogContent>
-      <DialogActions>
-        <Stack spacing={2} sx={{ justifySelf: "flex-end" }}>
-          <ButtonCustom color="grey" label="CLOSE"  onClick={onClose} />
-        </Stack>
-      </DialogActions>
-    </Dialog>
   );
 }
 

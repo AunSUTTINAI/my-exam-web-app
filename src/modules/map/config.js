@@ -1,3 +1,6 @@
+import Style1 from "../../../public/images/style1.png";
+import Style2 from "../../../public/images/style2.png";
+import { THEME_GLOBE, THEME_POSITRON } from "../../configs/constants";
 
 export const circlePaint = {
   "circle-color": [
@@ -38,7 +41,6 @@ export const circlePaint = {
   ],
 };
 
-
  export const instrumentMap = {
     VIIRS: "Visible Infrared Imaging Radiometer Suite",
     MODIS: "Moderate Resolution Imaging Spectroradiometer",
@@ -49,3 +51,19 @@ export const circlePaint = {
     nominal: "ปานกลาง (Nominal Confidence)",
     low: "ต่ำ (Low Confidence)",
   };
+
+
+export const mapThemesConfig = [
+  {
+    id: "globe", 
+    name: "Globe Theme",
+    styleUrl: THEME_GLOBE,
+    imageSrc: Style1 
+  },
+  {
+    id: "positron",
+    name: "Positron Theme",
+    styleUrl: THEME_POSITRON,
+    imageSrc: Style2 
+  }
+];
