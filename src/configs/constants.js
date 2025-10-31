@@ -11,4 +11,4 @@ export const THEME_POSITRON =
   "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
 export const THEME_GLOBE = "https://demotiles.maplibre.org/globe.json";
 
-export const DATE_TIME_FORMAT = "yyyy-MMM-DD hh:mm";
+export const DATE_TIME_FORMAT = "yyyy-MMM-DD hh:mm:ss";

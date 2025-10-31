@@ -16,8 +16,8 @@ export const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        //index: true
-        path: "/map",
+        index: true,
+        path: "/",
         element: <MapPage />,
       },
       { path: "/table", element: <TablePage /> },

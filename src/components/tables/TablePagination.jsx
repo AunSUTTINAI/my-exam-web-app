@@ -27,7 +27,7 @@ function TablePaginations({
   onPageChange,
   onRowsPerPageChange,
   loading = false,
-  onClick
+  onClick,
 }) {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -40,7 +40,7 @@ function TablePaginations({
                   key={column.id}
                   align={column.align || "left"}
                   style={{ minWidth: column.minWidth || 170 }}
-                  sx={{ fontWeight: "bold" }} // ทำให้ Header เป็นตัวหนา
+                  sx={{ fontWeight: "bold" }}
                 >
                   {column.label}
                 </TableCell>
@@ -104,13 +104,13 @@ function TablePaginations({
       </TableContainer>
 
       <TablePagination
-        rowsPerPageOptions={[10, 25, 50, 100]} // ตัวเลือก 'limit'
+        rowsPerPageOptions={[10, 25, 50, 100]}
         component="div"
-        count={totalCount} // จำนวนข้อมูลทั้งหมด
-        rowsPerPage={rowsPerPage} // 'limit' ที่ใช้อยู่
-        page={page} // หน้าปัจจุบัน (index)
-        onPageChange={onPageChange} // callback เมื่อกดเปลี่ยนหน้า
-        onRowsPerPageChange={onRowsPerPageChange} // callback เมื่อเปลี่ยน 'limit'
+        count={totalCount}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={onPageChange}
+        onRowsPerPageChange={onRowsPerPageChange}
       />
     </Paper>
   );

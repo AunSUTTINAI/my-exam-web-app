@@ -50,7 +50,6 @@ function DataPage() {
   const handleRowsPerPageChange = (event) => {
     const newLimit = parseInt(event.target.value, 10);
     setLimit(newLimit);
-    setPage(0);
   };
 
   const openDialog = useCallback((e) => {
