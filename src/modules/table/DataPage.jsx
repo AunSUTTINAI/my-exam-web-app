@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
-import TablePaginations from "../../components/tables/TablePagination";
+import TablePaginations from "@components/tables/TablePagination";
 import httpClient from "../../api/httpClient";
 import { apiCollection } from "../../configs/constants";
-import Loading from "../../components/loading/Loading";
+import Loading from "@components/loading/Loading";
 import DialogDetailMap from "../map/DialogDetailMap";
 import { columns } from "./config";
 

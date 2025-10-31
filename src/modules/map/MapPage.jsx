@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
-import CustomMap from "../../components/maps/CustomMap";
+import CustomMap from "@components/maps/CustomMap";
 import httpClient from "../../api/httpClient";
 import { apiCollection, THEME_GLOBE } from "../../configs/constants";
 import {
@@ -16,18 +16,13 @@ import {
   useTheme,
   CardHeader,
 } from "@mui/material";
-import Loading from "../../components/loading/Loading";
-import CardPosition from "../../components/card/CardPosition";
-import CustomSlider from "../../components/inputs/CustomSlider";
-import ButtonCustom from "../../components/buttons/ButtonCustom";
-import {
-  circlePaint,
-  confidenceMap,
-  instrumentMap,
-  mapThemesConfig,
-} from "./config";
-import PieChart from "../../components/charts/PieChart";
-import BarChart from "../../components/charts/BarChart";
+import Loading from "@components/loading/Loading";
+import CardPosition from "@components/card/CardPosition";
+import CustomSlider from "@components/inputs/CustomSlider";
+import ButtonCustom from "@components/buttons/ButtonCustom";
+import { circlePaint, mapThemesConfig } from "./config";
+import PieChart from "@components/charts/PieChart";
+import BarChart from "@components/charts/BarChart";
 import DialogDetailMap from "./DialogDetailMap";
 
 const MemoCustomMap = memo(CustomMap);
@@ -140,12 +135,6 @@ function App() {
     );
   //#endregion
 
-  const handleChageThemeMaps = useCallback((theme) => {
-    if (theme === 1) {
-      setChangeTheme();
-    } else {
-    }
-  }, []);
 
   return (
     <Box>
